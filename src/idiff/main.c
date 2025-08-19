@@ -43,7 +43,7 @@ void image_diff(char* name1, char* name2) {
       U32 height = img1.height;
       U32 channels = img1.channels;
 
-      const U32 vector_size = 4; // SSE2 processes 4 U32s at a time
+      const U32 vector_size = 4;
       const U32 total_elements = width*height;
       #pragma omp parallel for
       for (U32 i = 0; i <= total_elements; i += vector_size) {
@@ -66,11 +66,5 @@ int main(int argc, char* argv[]) {
       image_diff(argv[1], argv[2]);
       return 0;
 }
-
-
-
-
-/* void image_diff_mask(stbi_uc* img1, stbi_uc* img2) {} */
-
 
 
